@@ -448,7 +448,7 @@ class TimespanTest extends TestCase {
     {
         $this->expectException(\OverflowException::class);
         $this->expectExceptionMessage('TimeSpan overflowed because the duration is too long.');
-        new TimeSpan(TimeSpan::minValue()->ticks())->duration();
+        (new TimeSpan(TimeSpan::minValue()->ticks()))->duration();
     }
 
     public static function EqualsTestData()
