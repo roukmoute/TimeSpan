@@ -1018,4 +1018,21 @@ class TimespanTest extends TestCase {
     {
         $this->assertEquals($expected, new TimeSpan($ticks));
     }
+
+    public static function TotalSecondsExactRepresentationTestData()
+    {
+        return [
+            [TimeSpan::fromTime(0, 0, 0)],
+            [TimeSpan::fromTime(0, 0, 0, 1, 0)],
+            [TimeSpan::fromTime(0, 0, 0, 1, 100)],
+            [TimeSpan::fromTime(0, 0, 0, 0, -100)],
+            [TimeSpan::fromTime(0, 0, 0, 0, 34967800)],
+        ];
+    }
+
+    #[DataProvider("TotalSecondsExactRepresentationTestData")]
+    public function testTotalSecondsExactRepresentation(TimeSpan $value)
+    {
+        $this->assertEquals($value, TimeSpan::fromSeconds($value->totalSeconds()));
+    }
 }
