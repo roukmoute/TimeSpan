@@ -1035,4 +1035,21 @@ class TimespanTest extends TestCase {
     {
         $this->assertEquals($value, TimeSpan::fromSeconds($value->totalSeconds()));
     }
+
+    public static function NegateTestData()
+    {
+        return [
+            [TimeSpan::fromTime(0, 0, 0), TimeSpan::fromTime(0, 0, 0)],
+            [TimeSpan::fromTime(1, 2, 3), TimeSpan::fromTime(-1, -2, -3)],
+            [TimeSpan::fromTime(-1, -2, -3), TimeSpan::fromTime(1, 2, 3)],
+            [new TimeSpan(12345), new TimeSpan(-12345)],
+            [new TimeSpan(-12345), new TimeSpan(12345)],
+        ];
+    }
+
+    #[DataProvider("NegateTestData")]
+    public function testNegate(TimeSpan $timeSpan, TimeSpan $expected)
+    {
+        $this->assertEquals($expected, $timeSpan->negate());
+    }
 }

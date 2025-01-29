@@ -96,6 +96,10 @@ class TimeSpan {
         return $this->compare($this, $timeSpan2);
     }
 
+    public function negate(): TimeSpan
+    {
+        return new self(-$this->ticks);
+    }
 
     public static function zero(): TimeSpan
     {

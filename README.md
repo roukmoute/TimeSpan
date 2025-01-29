@@ -29,6 +29,7 @@ Represents a time interval
 - `duration()`: Returns the absolute value of the current duration.
 - `equals(?TimeSpan $t2)`: Checks if two `TimeSpan` instances are equal.
 - `compare(TimeSpan $timeSpan1, ?TimeSpan $timeSpan2)`: Compares two durations in ticks.
+- `negate(): TimeSpan`: Returns a new instance representing the negation of the current duration.
 
 #### Tick-Based Properties:
 - `ticks()`: Returns the duration in ticks.
